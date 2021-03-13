@@ -36,7 +36,9 @@ export const LoginScreen = () => {
           Login
         </button>
         <br />
-        <button onClick={handleGoogleLogin}>GOOGLE REGISTER</button>
+        <button onClick={handleGoogleLogin} disabled={loading}>
+          GOOGLE REGISTER
+        </button>
         <br />
         <Link to="/auth/register">Create new account</Link>
       </form>
