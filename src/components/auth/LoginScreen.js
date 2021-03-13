@@ -7,7 +7,7 @@ import { startGoogleLogin, startLoginEmailPassword } from "../../actions/auth";
 export const LoginScreen = () => {
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.ui);
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = (data) => {
     dispatch(startLoginEmailPassword(data.passwork, data.name));
@@ -21,16 +21,25 @@ export const LoginScreen = () => {
     <div>
       <h2>Login</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <input type="text" name="name" placeholder="Name" ref={register} />
-
+        <input
+          type="text"
+          name="name"
+          placeholder="Name"
+          ref={register({
+            required: true,
+          })}
+        />
+        {errors.name && <p>Name invalid o requerida</p>}
         <br />
         <input
           type="password"
           name="passwork"
           placeholder="Password"
-          ref={register}
+          ref={register({
+            required: true,
+          })}
         />
-
+        {errors.passwork && <p>Password invalid o requerida</p>}
         <br />
         <button type="submit" disabled={loading}>
           Login
