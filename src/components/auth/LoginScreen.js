@@ -35,11 +35,11 @@ export const LoginScreen = () => {
         <button type="submit" disabled={loading}>
           Login
         </button>
+        <br />
+        <button onClick={handleGoogleLogin}>GOOGLE REGISTER</button>
+        <br />
+        <Link to="/auth/register">Create new account</Link>
       </form>
-
-      <button onClick={handleGoogleLogin}>GOOGLE REGISTER</button>
-      <br />
-      <Link to="/auth/register">Create new account</Link>
     </div>
   );
 };
